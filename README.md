@@ -6,8 +6,9 @@ tautan menuju aplikasi Adaptable yang sudah di-deploy : https://aplikasibilly.ad
 
 # Checklist Tugas
 * Membuat sebuah proyek Django baru.
-    > Untuk membuat sebuah projek baru Django, kita perlu
-   
+    ```
+    Untuk membuat sebuah projek baru Django, kita perlu
+    ```
 
 - Membuat aplikasi dengan nama main pada proyek tersebut.
 - Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
