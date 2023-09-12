@@ -9,10 +9,23 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 # Checklist Tugas
 * Membuat sebuah proyek Django baru.
 
-Untuk membuat sebuah projek baru Django, kita perlu mengaktifkan Virtual Environment dalam direktori yang telah dibuat. Hal tersebut dapat dilakukan dengan menuliskan kode dibawah ini di dalam terminal (MacOS)
+    Untuk membuat sebuah projek baru Django, kita perlu membuat Virtual Environment dalam direktori yang telah dibuat. Hal tersebut dapat dilakukan dengan menuliskan kode dibawah ini di dalam terminal (MacOS)
+
     ```
-    python -m venv env
+    python3 -m venv env
     ```
+
+    Kemudian virtual environment diaktifkan. Hal ini bertujuan untuk *dependencies* sebuah projek supaya tidak terjadi pertukaran versi projek satu dengan projek lainnya. Virtual Environment dapat diaktifkan dengan menjalankan perintah dibawah ini.
+
+    ```
+    source env/bin/activate
+    ```
+
+    Lalu, untuk membuat sebuah projek Django diperlukan beberapa keperluan yang harus diinstall, hal tersebut bisa dilakukan dengan membuat file .txt dengan nama ```requirements.txt``` . Kemudian requirement tersebut diinstall dengan menggunakan perintah ```pip install -r requirements.txt```
+
+    Setelah semua berhasil diselesaikan, kita baru bisa membuat projek Django kita dengan menggunakan perintah ```django-admin startproject <nama_projek> .```
+
+    
 
 - Membuat aplikasi dengan nama main pada proyek tersebut.
 - Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
