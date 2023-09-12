@@ -1,13 +1,16 @@
-Nama : Luhur Budi Arbilianto
-Kelas : PBP B
-NPM : 2206824262
+* Nama : Luhur Budi Arbilianto
+* Kelas : PBP B
+* NPM : 2206824262
 
-tautan menuju aplikasi Adaptable yang sudah di-deploy : https://aplikasibilly.adaptable.app/main/ 
+Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly](https://aplikasibilly.adaptable.app/main/)**.
+
+1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 # Checklist Tugas
 * Membuat sebuah proyek Django baru.
+    Untuk membuat sebuah projek baru Django, kita perlu mengaktifkan Virtual Environment dalam direktori yang telah dibuat. Hal tersebut dapat dilakukan dengan menuliskan kode dibawah ini di dalam terminal (MacOS)
     ```
-    Untuk membuat sebuah projek baru Django, kita perlu
+    python -m venv env
     ```
 
 - Membuat aplikasi dengan nama main pada proyek tersebut.
@@ -21,7 +24,6 @@ tautan menuju aplikasi Adaptable yang sudah di-deploy : https://aplikasibilly.ad
 - Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
 - Membuat sebuah README.md yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
 -
-1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 
 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
