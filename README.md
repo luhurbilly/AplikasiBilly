@@ -74,7 +74,7 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 - Jadi, Virtual environment itu merupakan komponen penting dalam pengembangan suatu projek. Namun, kita tetap bisa membuat sebuah projek Django tanpa menggunakan virtual environment. Tetapi, hal tersebut bukan sebuah *best practice* karena dapat menimbulkan masalah - masalah yang seharusnya bisa ditangani oleh virtual environment.
 
 
-4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+## 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
 
     - MVC (Model-View-Controller) : 
         - Model = Mewakili data dan logika aplikasi
