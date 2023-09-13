@@ -25,23 +25,47 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
     Setelah semua berhasil diselesaikan, kita baru bisa membuat projek Django kita dengan menggunakan perintah ```django-admin startproject <nama_projek> .```
 
-    
+    Setelah dibuat, Django dengan otomatis membuatkan file - file yang diperlukan untuk kebutuhan deployment. Namun, kita juga perlu membuat file ```.gitignore``` untuk kebutuhan pemilihan file dalam proses push git.
 
-- Membuat aplikasi dengan nama main pada proyek tersebut.
-- Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
-- Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
-    name sebagai nama item dengan tipe CharField.
-    amount sebagai jumlah item dengan tipe IntegerField.
-    description sebagai deskripsi item dengan tipe TextField.
-- Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
-- Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
-- Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
-- Membuat sebuah README.md yang berisi tautan menuju aplikasi Adaptable yang sudah di-deploy, serta jawaban dari beberapa pertanyaan berikut.
--
+* Membuat aplikasi dengan nama main pada proyek tersebut.
 
+    Setelah projek Django berhasil dibuat, kita perlu membuat aplikasi baru dalam projek tersebut, aplikasi baru tersebut bernama ```main``` . Aplikasi main bisa dibuat dengan menjalankan ```python manage.py startapp main``` pada terminal. Prosesnya tidak hanya berhenti disana, kita juga perlu mendaftarkan aplikasi main ke dalam projek dengan menambahkan ``` 'main' ``` dalam variabel ```INSTALLED_APPS``` dalam file ```settings.py``` yang ada di projek kita.
 
-2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+    Nah, begitulah cara mendaftarkan apliksi dengan nama main di dalam projek Django kita.
 
+* Melakukan routing pada proyek agar dapat menjalankan aplikasi main.
+
+    Untuk melakukan routing, kita harus membuka file ```urls.py``` di dalam direktori projek kita , *bukan```main```* kita. Kemudian tambahkan 
+
+    ```
+     path('main/', include('main.urls')),
+    ```
+
+    ke dalam variabel ```urlpatterns``` , dengan begitu kita berhasil mengimport url aplikasi main kita, supaya aplikasi main dapat dijalankan.
+
+* Membuat model pada aplikasi main dengan nama Item dan memiliki atribut wajib sebagai berikut.
+
+    Dalam file ```models.py``` di direktori ```main``` kita perlu membuat kelas Item, dengan ```models.Model``` sebagai class dasar. kemudian menambahkan atribut dibawah ini di dalam kelasnya
+
+    ```name``` sebagai nama item dengan tipe ```CharField```.
+    ```amount``` sebagai jumlah item dengan tipe ```IntegerField```.
+    ```description``` sebagai deskripsi item dengan tipe ```TextField```.
+
+* Membuat sebuah fungsi pada views.py untuk dikembalikan ke dalam sebuah template HTML yang menampilkan nama aplikasi serta nama dan kelas kamu.
+
+    Dalam aplikasi ```main``` kita perlu membuka file ```views.py``` , kemudian kita membuat fungsi dengan nama ```show_main``` untuk mengatur request dan mereturn ke html kita. fungsi itu berisikan variabel yang kita perlukan , seperti nama dan kelas.
+
+* Membuat sebuah routing pada urls.py aplikasi main untuk memetakan fungsi yang telah dibuat pada views.py.
+
+    Dalam file ```urls.py``` di ```main```,kita bisa menambahkan barisan kode ini ```path('', show_main, name='show_main'),``` ke dalam variabel ```urlpatterns``` dengan tujuan untuk menghubungkan fungsi yang terlah kita buat di ```views.py```
+
+* Melakukan deployment ke Adaptable terhadap aplikasi yang sudah dibuat sehingga nantinya dapat diakses oleh teman-temanmu melalui Internet.
+
+    Proses Deployment bisa dilakukan dengan membuat aplikasi baru pada dashboard, kemudian mengubungkan adaptable dengan repo github projek kita. Lalu, sinkronisasi pemilihan frameworks dan database.
+
+## 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+
+![Bagan No 2](/Users/luhurbudiarbilianto/Documents/PBPB/AplikasiBilly/images/nomor 2.png)
 
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 
