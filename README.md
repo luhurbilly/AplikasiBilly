@@ -76,19 +76,19 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
 ## 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
 
-    - MVC (Model-View-Controller) : 
+- MVC (Model-View-Controller) : 
         - Model = Mewakili data dan logika aplikasi
         - View = Mengatur tampilan aplikasi
         - Controller = Perantara Model dan View, mengatur alur aplikasi
 
-    - MVT (Model-View-Template) :
+- MVT (Model-View-Template) :
         - Model = Mewakili data dan logika aplikasi
         - View = Mengatur tampilan aplikasi
         - Template = Mengontrol bagaimana data dari model ditampilkan di view
     
-    - MVVM (Model-View-ViewModel) :
+- MVVM (Model-View-ViewModel) :
         - Model = Mewakili data dan logika aplikasi
         - View = Mengatur tampilan aplikasi
         - ViewModel = Mengelola tampilan dan sebagai perantara model dan view. 
 
-    Perbedaan utama antara ketiga pola desain ini adalah terletak pada organisasi komponen Model, View, dan perantara antara keduanya (Controller, Template, atau ViewModel). Selain itu, pola desain ini memiliki kelebihannya sendiri di masing-masing platform. MVC sering digunakan dalam pengembangan web, MVT adalah adaptasi dari MVC yang diterapkan dalam Django, sedangkan MVVM biasanya digunakan dalam pembuatan aplikasi desktop atau mobile.
+Perbedaan utama antara ketiga pola desain ini adalah terletak pada organisasi komponen Model, View, dan perantara antara keduanya (Controller, Template, atau ViewModel). Selain itu, pola desain ini memiliki kelebihannya sendiri di masing-masing platform. MVC sering digunakan dalam pengembangan web, MVT adalah adaptasi dari MVC yang diterapkan dalam Django, sedangkan MVVM biasanya digunakan dalam pembuatan aplikasi desktop atau mobile.
