@@ -65,7 +65,7 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
 ## 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
-![Bagan No 2](/Users/luhurbudiarbilianto/Documents/PBPB/AplikasiBilly/images/nomor 2.png)
+<img src='/images/nomor 2.png'>
 
 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 
