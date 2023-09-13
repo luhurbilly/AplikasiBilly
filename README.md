@@ -69,9 +69,9 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
 ## 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
 
-    - Virtual Environment sangan berguna untuk kepentingan dependensi dan untuk mengisolate projek kita supaya tidak terjadi konflik atau kebingungan pemilihan paket dalam projek. Dengan begitu, kita telah memastikan bahwa semua dependensi source kita berada dalam satu lingkup yang sama. sehingga hal ini memudahkan kita untuk melakukan proses pengembangan dan pengelolaan projek.
+- Virtual Environment sangan berguna untuk kepentingan dependensi dan untuk mengisolate projek kita supaya tidak terjadi konflik atau kebingungan pemilihan paket dalam projek. Dengan begitu, kita telah memastikan bahwa semua dependensi source kita berada dalam satu lingkup yang sama. sehingga hal ini memudahkan kita untuk melakukan proses pengembangan dan pengelolaan projek.
 
-    - Jadi, Virtual environment itu merupakan komponen penting dalam pengembangan suatu projek. Namun, kita tetap bisa membuat sebuah projek Django tanpa menggunakan virtual environment. Tetapi, hal tersebut bukan sebuah *best practice* karena dapat menimbulkan masalah - masalah yang seharusnya bisa ditangani oleh virtual environment.
+- Jadi, Virtual environment itu merupakan komponen penting dalam pengembangan suatu projek. Namun, kita tetap bisa membuat sebuah projek Django tanpa menggunakan virtual environment. Tetapi, hal tersebut bukan sebuah *best practice* karena dapat menimbulkan masalah - masalah yang seharusnya bisa ditangani oleh virtual environment.
 
 
 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
