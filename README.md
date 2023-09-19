@@ -4,6 +4,8 @@
 
 Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly](https://aplikasibilly.adaptable.app/main/)**.
 
+
+### TUGAS 2
 ## 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di bawah ini secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 # Checklist Tugas
