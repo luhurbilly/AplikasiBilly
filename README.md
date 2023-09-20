@@ -8,53 +8,57 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
 ## Membuat input form untuk menambahkan objek model pada app sebelumnya.
 
-    - Buat file baru di main dengan nama ```forms.py``` , kemudian buka ```views.py``` untuk mengimport form yang telah kita buat.
+- Buat file baru di main dengan nama ```forms.py``` , kemudian buka ```views.py``` untuk mengimport form yang telah kita buat.
 
-    - Buat fungsi dengan nama ```create_item```, yang mana berfungsi untuk menerima data.
+- Buat fungsi dengan nama ```create_item```, yang mana berfungsi untuk menerima data.
 
-    - Tambahkan ```items = Item.objects.all()``` di fungsi show_main pada views.py. ini berfungsi untuk mengambil seluruh objek Item yang ada pada database kita
+- Tambahkan ```items = Item.objects.all()``` di fungsi show_main pada views.py. ini berfungsi untuk mengambil seluruh objek Item yang ada pada database kita
 
-    - Kemudian import fungsi yang telah kita buat ke urls.py di main dan tambahlan path urlnya ke dalam urlpatterns
+- Kemudian import fungsi yang telah kita buat ke urls.py di main dan tambahlan path urlnya ke dalam urlpatterns
 
-    - Buat file baru ```create_item.html``` dengan kode sesuai tampilan yang diinginkan di templates yang ada di main, lalu tambahkan kode di main.html yang berfungsi untuk menampilkan data yang ada dan redirect webpage ke form pagenya.
+- Buat file baru ```create_item.html``` dengan kode sesuai tampilan yang diinginkan di templates yang ada di main, lalu tambahkan kode di main.html yang berfungsi untuk menampilkan data yang ada dan redirect webpage ke form pagenya.
 
 ## Memmbuat fungsi untuk menampilkan data dalam berbagai format
 
-    - Buat fungsi ```show_xml``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format xml.
+- Buat fungsi ```show_xml``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format xml.
 
-     - Buat fungsi ```show_json``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format json.
+- Buat fungsi ```show_json``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format json.
 
-      - Buat fungsi ```show_xml_by_id``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format xml berdasarkan id yang kita mau.
+- Buat fungsi ```show_xml_by_id``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format xml berdasarkan id yang kita mau.
 
-       - Buat fungsi ```show_json_by_id``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format json berdasarkan id yang kita mau.
+- Buat fungsi ```show_json_by_id``` pada ```views.py``` yang berada di main dan tambahkan path urlnya ke urlpattern. Fungsi ini digunakan untuk menampilkan data dalam format json berdasarkan id yang kita mau.
 
 ## Apa perbedaan antara form POST dan form GET dalam Django?
 
-    POST dan GET berguna untuk mengirim data dari sebuah form html ke server. Namun, kedua cara ini memiliki perbedaan karakteristik. Salah satu yang paling signifikan adalah, saat kita menggunakan POST, data yang kita kirimkan berjalan secara 'tersembunyi' sehingga tidak ditampilkan pada URL. Lalu, jika mita menggunakan GET, data yang kita kirimkan ditampilkan ke siapapun yang melihat url kita. Jadi, dengan perbedaan karakteristik yang cukup signifikan, tentunya kedua cara ini memiliki kelebihan dan kekurangannya sendiri dalam kondisi tertentu
+POST dan GET berguna untuk mengirim data dari sebuah form html ke server. Namun, kedua cara ini memiliki perbedaan karakteristik. Salah satu yang paling signifikan adalah, saat kita menggunakan POST, data yang kita kirimkan berjalan secara 'tersembunyi' sehingga tidak ditampilkan pada URL. Lalu, jika mita menggunakan GET, data yang kita kirimkan ditampilkan ke siapapun yang melihat url kita. Jadi, dengan perbedaan karakteristik yang cukup signifikan, tentunya kedua cara ini memiliki kelebihan dan kekurangannya sendiri dalam kondisi tertentu
 
 ## Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
 
-    - **XML** , sering digunakan dalam pengiriman data yang mana data yang ada biasanya cukup kompleks. Format ini sangat fleksibel untuk menampilkan berbagai macam jenis data. Namun, dengan semua kelebihannya, xml memiliki sintaks yang bisa dibilang cukup rumit.
+- **XML** , sering digunakan dalam pengiriman data yang mana data yang ada biasanya cukup kompleks. Format ini sangat fleksibel untuk menampilkan berbagai macam jenis data. Namun, dengan semua kelebihannya, xml memiliki sintaks yang bisa dibilang cukup rumit.
 
-    - **JSON** , sering digunakan karena formantnya yang sederhana dan mudah dimengerti. struktur yang digunakan juga memungkinkan JSON digunakan untuk berbagai tujuan, seperti RESTful API. JSON terkenal lebih efisien dan lebih nyaman digunakan dibandingkan XML
+- **JSON** , sering digunakan karena formantnya yang sederhana dan mudah dimengerti. struktur yang digunakan juga memungkinkan JSON digunakan untuk berbagai tujuan, seperti RESTful API. JSON terkenal lebih efisien dan lebih nyaman digunakan dibandingkan XML
 
-    - **HTML** , bukan format yang secara eksplisit digunakan dalam pengiriman data, namun HTML dapat digunakan dalam pengaturan tampilan data di webpage. struktur yang digunakan juga jauh lebih sederhana dari XML dan JSON
+- **HTML** , bukan format yang secara eksplisit digunakan dalam pengiriman data, namun HTML dapat digunakan dalam pengaturan tampilan data di webpage. struktur yang digunakan juga jauh lebih sederhana dari XML dan JSON
 
 ## Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
 
-    - JSON memiliki sintaks yang sederhana dan mudah dimengerti 
+- JSON memiliki sintaks yang sederhana dan mudah dimengerti 
 
-    - JSON sangat cocok untuk digunakan dalam pembuatan RESTful API karena strukturnya yang ringkas dan kemudahan dalam mewakili data. 
+- JSON sangat cocok untuk digunakan dalam pembuatan RESTful API karena strukturnya yang ringkas dan kemudahan dalam mewakili data. 
 
-    - Overhead yang rendah dalam hal ukuran data
+- Overhead yang rendah dalam hal ukuran data
 
-    - JSON lebih universal dalam banyak bahasa pemrograman
+- JSON lebih universal dalam banyak bahasa pemrograman
 
-    - JSON adalah format yang ringkas dan penggunaannya yang efisien
+- JSON adalah format yang ringkas dan penggunaannya yang efisien
 
 ## Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 
 <img src='/images/postmanhtml.png'>
+<img src='/images/postmanxml.png'>
+<img src='/images/postmanjson.png'>
+<img src='/images/postmanxmlid.png'>
+<img src='/images/postmanjsonid.png'>
 
 
 #### TUGAS 2
