@@ -4,6 +4,64 @@
 
 Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly](https://aplikasibilly.adaptable.app/main/)**.
 
+#### TUGAS 4
+
+## Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya; tambahkan subjudul untuk setiap tugas).
+
+- Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+
+    Dalam ```views.py``` yang ada di ```main```, buat fungsi baru dengan nama ```register```, ```login_user```, dan ```logout_user```. jangan lupa import beberapa hal yang dibutuhkan seperti redirect dll. kemudian membuat file html baru dengan nama ```register.html``` dan ```login.html```, file ini berguna untuk landing page saat web meredirect. Lalu, tambahkan import  fungsi-fungsi yang sudah dibuat ke ```urls.py``` di main dan jangan lupa tambahkan path ke dalam variable urlspattern.
+
+    tambahkan kode dibawah ini tepat diatas fungsi show_main yang ada di views.py. ini berguna untuk merestriksi webpagenya, supaya main page hanya bisa diakses oleh orang yang sudah login.
+
+    ```@login_required(login_url='/login')```
+
+- Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+
+    Setelah kode diatas dimplementasikan, langsung buat dua akun dan mengisi item 3 item di tiap-tiap akunnya.
+
+- Menghubungkan model Item dengan User.
+
+    Dalam ```views.py``` di main, kita tambahkan kode ini dibagian paling atas kelas Item
+
+    ```user = models.ForeignKey(User, on_delete=models.CASCADE)```
+
+    kode tersebut berfungsi mengasosiasikan item dengan user. sehinggs user hanya melihat item yang ditambahkan oleh dirinya sendiri. 
+
+- Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi.
+
+    untuk menampilkan data sesuai dengan user yang sedang login, kita bisa melakukan request setelah tadi user dan item sudah dihubungkan. untuk menampilkan nama, di context dalam fungsi show_main, kita bisa mengubah namenya menjadi seperti ini 
+
+    ```
+    context = {
+        'name': request.user.username,
+    ...
+    ```
+
+    dan untuk data las login, bisa menambahkan kode ini ke context di show_main ```'last_login': request.COOKIES['last_login'],```.
+
+    dan jangan lupa membuat tampilan pesan untuk last login di file main.html 
+
+## Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?
+
+UserCreationForm adalah suatu built-in form yang disediakan untuk memudahkan proses pembuatan user dalam pengembangan web yang menggunakan Django. Kelebihan dari UserCreationForm adalah kemudahan dalam penggunaan dan integrasinya, sehingga pengembang tidak perlu menulis form dari awal. Namun, kekurangannya adalah kurangnya fleksibilitas jika kita ingin menyesuaikannya dengan kebutuhan khusus aplikasi Anda. 
+
+
+## Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?
+
+Autentikasi adalah proses verifikasi identitas pengguna, biasanya melalui username dan password. Otorisasi adalah proses yang mengatur izin akses pengguna ke suatu resource atau action di dalam aplikasi. Keduanya penting karena untuk memastikan bahwa pengguna yang dapat mengakses sistem adalah valid, dan tingkat akses yang didapat juga sesuai
+
+## Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+
+Cookies adalah sebua data kecil user yang disimpan oleh device saat user masuk ke suatu web. Cookies digunakan untuk menyimpan informasi tentang pengguna seperti preferensi pengguna, riwayat dll.
+
+Penggunaan Cookies dalam Django adalah untuk mengelola data sesi pengguna. Ketika pengguna berhasil login, Django akan membuat cookie yang berisi informasi tentang sesi pengguna, seperti ID dll. 
+
+## Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?
+
+keamanan penggunaan cookies dalam pengembangan web secara default adalah tidak aman, karena cookies dapat disalahgunakan oleh pihak yang tidak bertanggung jawab untuk mengakses personal information. risiko potensial yang harus diwaspadai adalah pelacakan aktivitas user, pencurian data dll.
+
+
 #### TUGAS 3
 
 ## Membuat input form untuk menambahkan objek model pada app sebelumnya.
