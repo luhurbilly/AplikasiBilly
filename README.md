@@ -30,7 +30,7 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
 ```<article>```: Mendefinisikan sebuah artikel.
 
-```<aside>```: Mendefinisikan konten yang terpisah dari konten utama (seperti sidebar).
+```<aside>```: Mendefinisikan konten yang terpisah dari konten utama.
 
 ```<footer>```: Mendefinisikan footer untuk dokumen atau bagian.
 
@@ -47,6 +47,7 @@ Margin adalah sebuah space yang mana akan mengosongkan area di sekitas border se
 ## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
 
 Tailwind CSS adalah suatu framework CSS yang lebih menekankan kustomisasi tinggi denganpendekatan "utility-first", sedangkan Bootstrap adalah framework CSS yang menyediakan komponen UI siap pakai dengan desain yang telah disediakan. Tailwind cocok untuk proyek yang memerlukan tingkat personalisasi yang tinggi, sementara Bootstrap lebih cocok untuk pengembangan secara cepat dengan komponen yang sudah disediakan.
+
 
 
 #### TUGAS 4
