@@ -4,6 +4,51 @@
 
 Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly](https://aplikasibilly.adaptable.app/main/)**.
 
+#### TUGAS 5
+
+## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+
+- Element Selecctor
+
+    element selector berguna untuk mengubah properti semua elemen untuk yang memiliki tag HTML sama. waktu yang tepat menggunakannya adalah pada saat untuk mengubah elemen yang bersifat tunggal
+
+- ID Selector
+
+    ID selector berguna untuk mengubah properti menggunakan ID yang bersifat unik. id digunakan sebagai selector dalam file CSS nya. waktu yang tepat menggunakannya adalah pada saat mengubah elemen spesifik yang tidak akan muncul lebih dari sekali.
+
+- Class Selector
+
+    ID selector berguna untuk mengubah properti menggunakan class yang memungkinkan kita untuk mengelompokkan elemen. class digunakan sebagai selector dalam file CSS nya. waktu yang tepat menggunakannya adalah pada saat mengubah elemen yang berbagi karakteristik yang sama.
+
+## Jelaskan HTML5 Tag yang kamu ketahui.
+
+<header>: Mendefinisikan header untuk dokumen atau bagian.
+
+<nav>: Mendefinisikan kumpulan tautan navigasi.
+
+<section>: Mendefinisikan sebuah bagian dalam dokumen.
+
+<article>: Mendefinisikan sebuah artikel.
+
+<aside>: Mendefinisikan konten yang terpisah dari konten utama (seperti sidebar).
+
+<footer>: Mendefinisikan footer untuk dokumen atau bagian.
+
+<video>: Mendefinisikan video atau film.
+
+<audio>: Mendefinisikan konten suara.
+
+<canvas>: Mendefinisikan kanvas untuk grafis.
+
+## Jelaskan perbedaan antara margin dan padding.
+
+Margin adalah sebuah space yang mana akan mengosongkan area di sekitas border secara transparan, sedangkan padding adalah  sebuah space yang mengosongkan area yang berada di sekitar konten secara transparan juga
+
+## Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+
+Tailwind CSS adalah suatu framework CSS yang lebih menekankan kustomisasi tinggi denganpendekatan "utility-first", sedangkan Bootstrap adalah framework CSS yang menyediakan komponen UI siap pakai dengan desain yang telah disediakan. Tailwind cocok untuk proyek yang memerlukan tingkat personalisasi yang tinggi, sementara Bootstrap lebih cocok untuk pengembangan secara cepat dengan komponen yang sudah disediakan.
+
+
 #### TUGAS 4
 
 ## Menjawab beberapa pertanyaan berikut pada README.md pada root folder
