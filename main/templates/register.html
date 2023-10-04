@@ -4,31 +4,115 @@
     <title>Register</title>
 {% endblock meta %}
 
-{% block content %}  
+{% block content %}
 
-<div class = "login">
-    
-    <h1>Register</h1>  
+<div class="login-container" style="margin-top: 100px;">
+    <h1>Register</h1>
 
-        <form method="POST" >  
-            {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
-        </form>
+    <form method="POST" class="registration-form">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="{{ form.username.id_for_label }}">Username:</label></td>
+                <td><input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" class="text-field" /></td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.password1.id_for_label }}">Password:</label></td>
+                <td><input type="password" id="{{ form.password1.id_for_label }}" name="{{ form.password1.name }}" class="text-field" /></td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.password2.id_for_label }}">Password Confirmation:</label></td>
+                <td><input type="password" id="{{ form.password2.id_for_label }}" name="{{ form.password2.name }}" class="text-field" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" value="Daftar" class="btn-submit" /></td>
+            </tr>
+        </table>
+    </form>
 
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
+    {% if messages %}
+    <ul class="message-list">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
     {% endif %}
+    
+    <div class="password-requirements" style="text-align: mi; margin-top: 50px;">
+        <h2>Password Requirements:</h2>
+        <ul>
+            <li>At least 8 characters long</li>
+            <li>Contains at least one uppercase letter</li>
+            <li>Contains at least one lowercase letter</li>
+            <li>Contains at least one special character (e.g., @, #, $)</li>
+            <li>Does not contain your username</li>
+        </ul>
+    </div>
+</div>
 
-</div>  
+
+<style>
+    /* Apply styles to the container */
+    .login-container {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    /* Style the registration form */
+    .registration-form {
+        width: 100%;
+    }
+
+    .registration-form table {
+        width: 100%;
+    }
+
+    /* Style the text fields and labels */
+    .text-field {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Style the submit button */
+    .btn-submit {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        
+    }
+
+    .btn-submit:hover {
+        background-color: #0056b3;
+    }
+
+    /* Style the message list */
+    .message-list {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        color: #FF5733;
+    }
+
+    .message-list li {
+        margin: 5px 0;
+    }
+</style>
 
 {% endblock content %}
