@@ -22,23 +22,23 @@ Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly
 
 ## Jelaskan HTML5 Tag yang kamu ketahui.
 
-<header>: Mendefinisikan header untuk dokumen atau bagian.
+```<header>```: Mendefinisikan header untuk dokumen atau bagian.
 
-<nav>: Mendefinisikan kumpulan tautan navigasi.
+```<nav>```: Mendefinisikan kumpulan tautan navigasi.
 
-<section>: Mendefinisikan sebuah bagian dalam dokumen.
+```<section>```: Mendefinisikan sebuah bagian dalam dokumen.
 
-<article>: Mendefinisikan sebuah artikel.
+```<article>```: Mendefinisikan sebuah artikel.
 
-<aside>: Mendefinisikan konten yang terpisah dari konten utama (seperti sidebar).
+```<aside>```: Mendefinisikan konten yang terpisah dari konten utama (seperti sidebar).
 
-<footer>: Mendefinisikan footer untuk dokumen atau bagian.
+```<footer>```: Mendefinisikan footer untuk dokumen atau bagian.
 
-<video>: Mendefinisikan video atau film.
+```<video>```: Mendefinisikan video atau film.
 
-<audio>: Mendefinisikan konten suara.
+```<audio>```: Mendefinisikan konten suara.
 
-<canvas>: Mendefinisikan kanvas untuk grafis.
+```<canvas>```: Mendefinisikan kanvas untuk grafis.
 
 ## Jelaskan perbedaan antara margin dan padding.
 
