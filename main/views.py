@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from main.forms import ItemForm
+from django.http import HttpResponseNotFound, JsonResponse
 from django.urls import reverse
 from main.models import Item
 from django.http import HttpResponse
@@ -11,7 +12,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 import datetime
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -34,9 +38,9 @@ def create_item(request):
     form = ItemForm(request.POST or None)
 
     if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)
-        product.user = request.user
-        product.save()
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
         return HttpResponseRedirect(reverse('main:show_main'))
     
     context = {'form': form}
@@ -113,3 +117,43 @@ def delete_item(request, id):
     item.delete()
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
+
+@csrf_exempt
+def delete_item_ajax(request, item_id):
+    if request.method == 'DELETE':
+        item = get_object_or_404(Item, pk=item_id)
+        item.delete()
+        return HttpResponse(b"DELETED", status=200)
+    return HttpResponseNotFound()
+
+def get_item_json(request):
+    product_item = Item.objects.all()
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_item = Item(name=name, amount=amount, description=description, user=user)
+        new_item.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+def get_item_by_id(request, item_id):
+    # Mengambil item berdasarkan ID atau mengembalikan 404 jika tidak ditemukan
+    item = get_object_or_404(Item, pk=item_id)
+    
+    # Mengonversi item ke format yang sesuai (misalnya, JSON)
+    item_data = {
+        'name': item.name,
+        'amount': item.amount,
+        'description': item.description,
+    }
+    
+    return JsonResponse(item_data)

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+   
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
         <a class="navbar-brand" href="#">NavBil</a>
@@ -35,9 +36,6 @@
     </nav>
 
     <div class="container-fluid" style="margin-top: 20px;">
-        <!-- <div style="border: 2px solid #3f3cff; background-color: #0586ff; padding: 10px; color: #fff;">
-            <h1 style="margin: 0; padding: 0;">AplikasiBilly</h1>
-        </div> -->
         <h1>
             <span style="background-color: #50cbff; padding: 5px; border-radius: 10px; color: #fff;">AplikasiBilly</span>
         </h1>
@@ -58,45 +56,163 @@
             <p>Your Item</p>
         </h5>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Description</th>
-                    <th>Date Added</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
-                    <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.amount }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>{{ item.date_added }}</td>
-                        <td>
-                            <a href="{% url 'main:edit_item' item.pk %}" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="{% url 'main:delete_item' item.pk %}" class="btn btn-danger btn-sm">Delete</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="row" id="item_table">
+            <!-- Card items will be added dynamically with JavaScript -->
+        </div>
+        
+        <!-- Modal for adding new items -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="col-form-label">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- ... rest of your content ... -->
+        <!-- Modal for editing items -->
+        <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="editItemModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editItemModalLabel">Edit Item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm" onsubmit="return false;">
+                            {% csrf_token %}
+                            <input type="hidden" id="editItemId" name="item_id">
+                            <div class="mb-3">
+                                <label for="editName" class="col-form-label">Name:</label>
+                                <input type="text" class="form-control" id="editName" name="name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editAmount" class="col-form-label">Amount:</label>
+                                <input type="number" class="form-control" id="editAmount" name="amount">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editDescription" class="col-form-label">Description:</label>
+                                <textarea class="form-control" id="editDescription" name="description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_edit" data-bs-dismiss="modal">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+
+        {% if item.pk %}
+        <a href="{% url 'main:edit_item' item.pk %}">
+            <button>
+                Edit
+            </button>
+        </a>
+        {% endif %}
+
+
+        <a href="{% url 'main:logout' %}" class="btn btn-danger">
+            <i class="bi bi-box-arrow-right"></i> Logout
+        </a>
+
+        <script>
+            async function getItems() {
+                return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+            }
+
+            async function refreshItems() {
+                const items = await getItems();
+                const itemTable = document.getElementById("item_table");
+                itemTable.innerHTML = ""; // Clear the existing items
+
+                items.forEach(item => {
+                    // Create a Bootstrap card for each item
+                    const card = document.createElement("div");
+                    card.classList.add("col-md-4", "mb-4");
+                    
+                    const cardHTML = `
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.fields.name}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Amount: ${item.fields.amount}</h6>
+                                <p class="card-text">${item.fields.description}</p>
+                                <p class="card-text">Date Added: ${item.fields.date_added}</p>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-danger btn-sm" data-url="{% url 'main:delete_item_ajax' 123 %}" onclick="deleteItem(this, ${item.pk})">Delete</button>
+                                <a href="edit-item/${item.pk}"> <button class="btn btn-primary btn-sm mx-1"> Edit </button> </a>
+                            </div>
+
+                        </div>
+                    `;
+                    card.innerHTML = cardHTML;
+                    itemTable.appendChild(card);
+                });
+            }
+
+            refreshItems();
+
+            function addItem() {
+                fetch("{% url 'main:add_item_ajax' %}", {
+                    method: "POST",
+                    body: new FormData(document.querySelector('#form'))
+                }).then(refreshItems)
+
+                document.getElementById("form").reset()
+                return false
+            }
+
+            document.getElementById("button_add").onclick = addItem
+
+        
+            function deleteItem(button, id) {
+                let url = button.getAttribute('data-url').replace('123', id);
+                fetch(url, {
+                    method: "DELETE",
+                }).then(refreshItems)
+            }
+
+            
+
+        
+
+            
+
+        </script>
     
         <br />
     
-        <a href="{% url 'main:create_item' %}" class="btn btn-outline-success" style="background-color: #00A65E; border-color: #00A65E; color: #fff;">
-            <!-- <i class="bi bi-plus"></i> Add New Item -->
-            Add New Item <i class="bi bi-plus"></i>
-        </a>
-    
-        <a href="{% url 'main:logout' %}" class="btn btn-danger">
-            <!-- <button>
-                Logout
-            </button> -->
-            <i class="bi bi-box-arrow-right"></i> Logout
-        </a>
     
         <h5>Sesi terakhir login: {{ last_login }}</h5>
     </div>
