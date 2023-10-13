@@ -4,6 +4,121 @@
 
 Berikut adalah tautan aplikasi Adaptable yang sudah di-deploy : **[AplikasiBilly](https://aplikasibilly.adaptable.app/main/)**.
 
+#### Tugas 6
+
+## AJAX GET
+
+- Ubahlah kode cards data item agar dapat mendukung AJAX GET.
+
+menambahkan kode dibawah ini ke main.html
+
+```
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">${item.fields.name}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Amount: ${item.fields.amount}</h6>
+        <p class="card-text">${item.fields.description}</p>
+        <p class="card-text">Date Added: ${item.fields.date_added}</p>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-danger btn-sm" data-url="{% url 'main:delete_item_ajax' 123 %}" onclick="deleteItem(this, ${item.pk})">Delete</button>
+        <a href="edit-item/${item.pk}"> <button class="btn btn-primary btn-sm mx-1"> Edit </button> </a>
+    </div>
+
+</div>
+```
+
+- Lakukan pengambilan task menggunakan AJAX GET.
+
+membuat fungsi get_item_json pada views.py untuk mengembalikan data JSON
+
+lalu tambahkan kode dibawah ini pada <script> di main.html
+
+```
+async function getItems() {
+    return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+}
+```
+
+## AJAX POST
+
+- Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item.
+
+Menambahkan kode berikut dalam main.html
+
+```
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Item</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+```
+
+dan 
+
+```
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+
+```
+
+- Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat.
+
+Menambahkan Routing Untuk Fungsi add_item_ajax dan get_item_json pada urls.py
+
+- Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/.
+
+Menambahkan fungsi addItem pada <script> di main.html
+
+- Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan.
+
+Menambahkan fungsi refreshItems pada <script> di main.html
+
+- Melakukan perintah collectstatic.
+
+## Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+
+Asynchronous programming dan synchronous programming adalah dua jenis pendekatan dalam mengelola kode. Synchronous programming menjalankan tugas secara berurutan, sementara asynchronous programming memungkinkan tugas-tugas berjalan bersamaan. Asynchronous programming cocok untuk aplikasi yang memerlukan respons cepat dan penanganan tugas bersamaan, seperti aplikasi berbasis jaringan, sementara synchronous programming lebih sederhana dan sesuai untuk tugas-tugas atau aplikasi yang lebih sederhana.
+
+## Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+
+Paradigma event-driven programming adalah pendekatan pemrograman di mana program merespons events yang terjadi secara asinkron, seperti klik tombol, input pengguna, atau permintaan data dari server. Contoh penerapannya adalah ketika kita menggunakan JavaScript untuk menambahkan event listener pada sebuah tombol di halaman web yang akan memicu permintaan AJAX ke server saat tombol tersebut diklik. 
+
+## Jelaskan penerapan asynchronous programming pada AJAX.
+
+Penerapan asynchronous programming pada AJAX memungkinkan komunikasi data antara browser dan server tanpa menghalangi eksekusi program JavaScript lainnya. Dalam konteks AJAX, asynchronous programming memungkinkan pengiriman permintaan HTTP ke server dan menangani responnya secara asinkron. Ini memungkinkan program JavaScript untuk melanjutkan eksekusi kode tanpa harus menunggu respon dari server. 
+
+## Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+Penggunaan Fetch API jika dibandingkan dengan library jQuery dalam penerapan AJAX memiliki beberapa perbedaan utama. Fetch API adalah bagian dari JavaScript modern yang dirancang untuk mengambil dan mengirim data ke dan dari server dengan lebih sederhana daripada jQuery. menjadikan projek memiliki performa yang lebih baik dan memungkinkan fleksibilitas yang lebih besar dalam mengelola permintaan dan respon.
+
+Pemilihan antara Fetch API dan jQuery tergantung dengan kebutuhan proyek. Jika proyek lebih kompleks memiliki ketergantungan pada fungsi-fungsi utilitas yang telah ada di jQuery, maka jQuery mungkin menjadi pilihan yang lebih baik. Namun, jika proyek ingin memanfaatkan fitur JavaScript modern, mengurangi ukuran aplikasi, dan mengoptimalkan performa, maka menggunakan Fetch API adalah pilihan cocok. 
+
 #### TUGAS 5
 
 ## Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
