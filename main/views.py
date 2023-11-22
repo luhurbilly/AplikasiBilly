@@ -22,6 +22,7 @@ from django.views.decorators.csrf import csrf_exempt
 @login_required(login_url='/login')
 def show_main(request):
     items = Item.objects.filter(user=request.user)
+    print(request.user)
 
     context = {
         'name': request.user.username,
@@ -127,7 +128,7 @@ def delete_item_ajax(request, item_id):
     return HttpResponseNotFound()
 
 def get_item_json(request):
-    product_item = Item.objects.all()
+    product_item = Item.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', product_item))
 
 @csrf_exempt
@@ -157,3 +158,22 @@ def get_item_by_id(request, item_id):
     }
     
     return JsonResponse(item_data)
+
+@csrf_exempt
+def create_item_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_item = Item.objects.create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["amoubn"]),
+            description = data["description"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
